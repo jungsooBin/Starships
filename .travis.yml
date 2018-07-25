@@ -24,4 +24,4 @@ deploy:
   provider: heroku
   app: grace-starships # see README
   api_key:
-     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+     secure: Wy947i74x82Tpqiyz-WH7w # see README
