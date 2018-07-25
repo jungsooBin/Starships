@@ -14,7 +14,7 @@ notifications:
 install:
   - npm ci # faster, goes only from package-lock
 before_script:
-  - psql -c 'create database "boilermaker-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
+  - psql -c 'create database "starships-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 
 before_deploy:
 - npm run build-client # make the bundle
@@ -24,4 +24,4 @@ deploy:
   provider: heroku
   app: grace-starships # see README
   api_key:
-     secure: Wy947i74x82Tpqiyz-WH7w # see README
+    secure: Wy947i74x82Tpqiyz-WH7w # see README
