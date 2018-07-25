@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {Ship} = require('../server/db/models')
 
 /**
  * Welcome to the seed file! This seed file uses a newer language feature called...
@@ -15,18 +15,72 @@ const {User} = require('../server/db/models')
  * Now that you've got the main idea, check it out in practice below!
  */
 
+
+const ships = [{
+  name: "Executor",
+  model: "Executor-class star dreadnought",
+  manufacturer: "Kuat Drive Yards, Fondor Shipyards",
+  price: 1143350000,
+  },
+  {
+    name: "Death Star",
+    model: "DS-1 Orbital Battle Station",
+    manufacturer: "Imperial Department of Military Research, Sienar Fleet Systems",
+    price: 1000000000000,
+  },
+  {
+    name: "Millennium Falcon",
+    model: "YT-1300 light freighter",
+    manufacturer: "Corellian Engineering Corporation",
+    price: 100000,
+  },
+  {
+    name: "Y-wing",
+    model: "BTL Y-wing",
+    manufacturer: "Koensayr Manufacturing",
+    price: 134999,
+  },
+  {
+    name: "X-wing",
+    model: "T-65 X-wing",
+    manufacturer: "Incom Corporation",
+    price: 149999,
+  },
+  {
+    name: "Slave 1",
+    model: "Firespray-31-class patrol and attack",
+    manufacturer: "Kuat Systems Engineering",
+    price: 13457,
+  },
+  {
+    name: "Imperial shuttle",
+    model: "Lambda-class T-4a shuttle",
+    manufacturer: "Sienar Fleet Systems",
+    price: 240000,
+  },
+  {
+    name: "EF76 Nebulon-B escort frigate",
+    model: "EF76 Nebulon-B escort frigate",
+    manufacturer: "Kuat Drive Yards",
+    price: 8500000,
+  },
+  {
+    name: "TIE Advanced x1",
+    model: "Twin Ion Engine Advanced x1",
+    manufacturer: "Sienar Fleet Systems",
+    price: 738462,
+  },
+]
+
+
 async function seed() {
   await db.sync({force: true})
+  await Promise.all(ships.map(ship => Ship.create(ship)));
   console.log('db synced!')
   // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
   // executed until that promise resolves!
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
-  ])
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
   // and store the result that the promise resolves to in a variable! This is nice!
-  console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }
 
