@@ -71,7 +71,7 @@ const ships = [{
     price: 738462,
   },
 ]
-
+//whats god
 
 async function seed() {
   await db.sync({force: true})
