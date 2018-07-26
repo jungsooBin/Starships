@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const CartPage = (props) => {
   return (
     <div>
-      <p>Your cart right now</p>
+      <p>Your Cart</p>
       {Object.keys(props.items).length === 0
         ? <div>Is empty :(</div>
         : (
@@ -13,7 +13,7 @@ const CartPage = (props) => {
             const item = props.items[productId];
             return (
               <div key={productId}>
-                {item.title} (x{item.quantity})
+                {item.title} ({item.quantity})
               </div>
             );
           })}
