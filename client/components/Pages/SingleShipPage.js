@@ -43,8 +43,7 @@ class SingleShipPage extends Component {
         <hr />
         <button onClick={() => putInCart(singleShip.name, quantity)}>Add To Cart</button>
         <hr />
-        <ReviewList starship={singleShip}/>
-
+        <ReviewList />
       </div>
     )
 
