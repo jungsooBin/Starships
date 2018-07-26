@@ -19,9 +19,11 @@ export default function ShipCard(props) {
       <div className="container">
         <h4 className='center'><b>{ship.name}</b></h4>
         <div className='center'>
-          <p>Name: {ship.name}</p>
-          <p>Model: {ship.model} </p>
-          <p>Price: {ship.price} </p>
+          <Link to={`/starships/${ship.id}`} >
+            <p>Name: {ship.name}</p>
+            <p>Model: {ship.model} </p>
+            <p>Price: {ship.price} </p>
+          </Link>
           <button className="button button2">Add to Cart</button>
         </div>
       </div>
