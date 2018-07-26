@@ -11,16 +11,16 @@ class SingleShipPage extends Component {
     super();
     this.state = {
       quantity : 0,
-      product : this.props.singleShip
     }
   }
 
   componentDidMount() {
-    this.props.fetchSingleShip();
+    const id = this.props.match.params.id;
+    this.props.fetchSingleShip(id);
   }
 
   render() {
-    const singleShip = this.state.product;
+    const singleShip = this.props.singleShip;
 
     return (
       <div>
@@ -38,12 +38,12 @@ class SingleShipPage extends Component {
         <p>Quantity:</p>
         <button onClick={() => {this.setState({quantity:this.state.quantity-1})}} >-</button>
         <h6>{this.state.quantity}</h6>
-        <button onClick={() => {this.setState({quantity:this.state.quantity-1})}} >+</button>
+        <button onClick={() => {this.setState({quantity:this.state.quantity+1})}} >+</button>
 
         <hr />
-        <button onClick={() => putInCart(singleShip.name, quantity)}>Add To Cart</button>
+        <button onClick={() => this.props.putInCart(singleShip.name, this.state.quantity)}>Add To Cart</button>
         <hr />
-        <ReviewList />
+        {/* <ReviewList /> */}
       </div>
     )
 
@@ -53,7 +53,7 @@ class SingleShipPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    singleShip: state.singleShip
+    singleShip: state.ship.singleShip
   }
 }
 
