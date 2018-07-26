@@ -5,7 +5,7 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {me} from './store'
-import {ShipList, CartPage, Checkout, SingleUserPage, SingleShipPage} from './Pages'
+import {AddReview, EditReview, ShipList, CartPage, Checkout, SingleUserPage, SingleShipPage} from './Pages'
 
 /**
  * COMPONENT
@@ -30,6 +30,9 @@ class Routes extends Component {
 
             <Route exact path="/starships" component={ShipList} />
             <Route exact path='/starships/:id' component={SingleShipPage}/>
+            <Route exact path='/starships/:id/AddReview' component={AddReview}/>
+            <Route exact path='/starships/:id/:reviewId' component={AddReview}/>
+
             <Route path="/cart" component={CartPage} />
             <Route path='/checkout' component={Checkout} />
             <Route path='/users/:userId' component={SingleUserPage} />
