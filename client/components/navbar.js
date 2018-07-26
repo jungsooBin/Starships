@@ -13,11 +13,11 @@ import React, { Component } from 'react'
       <div className='navbar'>
         <ul>
             <li><a className="active" href="#home">Home</a></li>
-            <li><a href="#allShips">All Ships</a></li>
+            <li><a href="#starships">All Ships</a></li>
             <li><a href="#account"> User's Name</a></li>
             <li className='right'><a href="#account">Account</a></li>
             <li className='right'><a href="#cart">Cart (0)</a></li>
-        </ul> 
+        </ul>
       </div>
     )
   }
