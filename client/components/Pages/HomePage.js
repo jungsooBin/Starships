@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchShips} from '../../store/ship'
-import {ShipCard} from '../cards/Shipcard'
+import ShipCard from '../cards/ShipCard'
 
 class HomePage extends Component {
 
@@ -18,7 +18,6 @@ class HomePage extends Component {
   }
 
   render(){
-    console.log(this.props.ships)
     const featuredShips = this.props.ships.filter(ship => ship.isFeatured);
     return (
       <div>
@@ -26,7 +25,7 @@ class HomePage extends Component {
         <p>Shop for the best starships in the Galaxy today!</p>
         <h5>Featured StarShips</h5>
         {featuredShips.map((ship) => (
-          <ShipCard ship={ship} />
+          <ShipCard ship={ship} key={ship.id}/>
         ))}
         <Link to='/starships' >View All</Link>
       </div>
@@ -36,7 +35,6 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     ships: state.ship.ships
   }
