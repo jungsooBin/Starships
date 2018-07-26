@@ -11,7 +11,38 @@ router.get('/', async (req, res, next) => {
       attributes: ['id', 'email', 'googleId', 'firstName', 'lastName']
     })
     res.json(users)
-  } catch (err) {
-    next(err)
-  }
-})
+  } catch (error) { next (error) }
+});
+
+router.get('/:userId', async (req, res, next) => {
+  try{
+    const user = await User.findById(req.params.userId)
+    res.json(user)
+  } catch (error) { next (error) }
+});
+
+router.post('/', async (req, res, next) => {
+  try {
+    const user = await User.create(req.body)
+    res.sendStatus(201)
+  } catch (error) { next (error) }
+});
+
+router.put('/:userId', async (req,res,next) => {
+  try {
+    const findUser = await User.findById(req.params.userId)
+    const updatedUser = await findUser.update(req.body)
+    res.status(200).json(updatedUser)
+  } catch (error) { next (error) }
+});
+
+router.delete('/:userId', async (req, res, next) => {
+  try {
+    await User.destroy({
+    where: {
+      id: req.params.userId
+    }
+  })
+  res.sendStatus(204)
+  } catch (error) { next (error) }
+});
