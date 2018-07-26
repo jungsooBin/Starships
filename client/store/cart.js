@@ -1,14 +1,15 @@
 export const ADD_TO_CART = 'ADD_TO_CART';
 
-export const addToCart = product => ({
+export const addToCart = (product,quantity) => ({
   type: ADD_TO_CART,
-  payload: product
+  product,
+  quantity
 });
 
-const cartReducer = (cartState = [], action) => {
+const cartReducer = (cartState = {}, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      return [...cartState, action.payload];
+      return {...cartState, [action.product] : action.quantity};
     default:
       return cartState;
   }
