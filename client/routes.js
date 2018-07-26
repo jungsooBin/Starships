@@ -5,10 +5,15 @@ import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {me} from './store'
-// import AddReview from './'
-// import EditReview from './'
+
+// import AddReview from './components/Pages/AddReview'
+// import EditReview from './components/Pages/EditReview'
 import ShipList from './components/Pages/ShipList'
+import CartPage from './components/Pages/CartPage'
+import Checkout from './components/Pages/Checkout'
+import SingleUserPage from './components/Pages/SingleUserPage'
 import SingleShipPage from './components/Pages/SingleShipPage'
+
 import HomePage from './components/Pages/HomePage';
 //import Cart from './components/Pages/Cart'
 //Checkout, SingleUserPage,
@@ -34,6 +39,8 @@ class Routes extends Component {
         <Route exact path='/starships/:id' component={SingleShipPage}/>
         <Route exact path="/starships" component={ShipList} />
         <Route exact path='/starships/:id' component={SingleShipPage}/>
+        {/* <Route exact path='/starships/:id/AddReview' component={AddReview}/>
+        <Route exact path='/starships/:id/:reviewId' component={AddReview}/> */}
         <Route path="/cart" component={CartPage} />
         <Route path='/checkout' component={Checkout} />
         <Route path='/users/:userId' component={SingleUserPage} />
