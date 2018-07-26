@@ -1,24 +1,25 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {fetchShips} from '../../store/ship'
+import {ShipCard} from '../cards/Shipcard'
 
 class HomePage extends Component {
 
   constructor(){
+    super();
     this.state = {
       ships : []
     }
-    super();
   }
 
-  componentDidMount(){
-    fetchShips();
-    this.setState({
-      ships: this.props.ships
-    })
+  async componentDidMount(){
+    await this.props.fetchAllShips();
   }
 
   render(){
-    const featuredShips = this.state.ships.filter(ship => ship.isFeatured);
+    console.log(this.props.ships)
+    const featuredShips = this.props.ships.filter(ship => ship.isFeatured);
     return (
       <div>
         <h3>StarShips</h3>
@@ -35,16 +36,17 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
-    ships: state.ships
+    ships: state.ship.ships
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchShips: () => (dispatch(fetchShips())),
+    fetchAllShips: () => dispatch(fetchShips()),
     putInCart: (product, quantity) => dispatch(addToCart(product, quantity))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleShipPage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

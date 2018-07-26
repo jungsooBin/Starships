@@ -21,18 +21,21 @@ const ships = [{
   model: "Executor-class star dreadnought",
   manufacturer: "Kuat Drive Yards, Fondor Shipyards",
   price: 1143350000,
+  isFeatured: true
   },
   {
     name: "Death Star",
     model: "DS-1 Orbital Battle Station",
     manufacturer: "Imperial Department of Military Research, Sienar Fleet Systems",
     price: 1000000000000,
+    isFeatured: true
   },
   {
     name: "Millennium Falcon",
     model: "YT-1300 light freighter",
     manufacturer: "Corellian Engineering Corporation",
     price: 100000,
+    isFeatured: true
   },
   {
     name: "Y-wing",
