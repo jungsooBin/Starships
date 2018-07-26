@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Ship} = require('../db/models')
+const {Review, User, Ship} = require('../db/models')
 module.exports = router
 
 
@@ -16,7 +16,9 @@ router.get('/', async(req, res, next) =>{
 //GET single ship
 router.get('/:id', async(req, res, next) =>{
   try{
-    const ship = await Ship.findById(req.params.id)
+    const ship = await Ship.findById(req.params.id,{
+      include: [{model: Review}]
+    })
     res.json(ship);
   }catch(error){
     next(error)
