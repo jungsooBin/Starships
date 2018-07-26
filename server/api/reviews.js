@@ -13,6 +13,7 @@ router.get('/:id', async(req, res, next) =>{
     } )
     res.json(review);
   }catch(error){
-    next(error)
+    next(error) 
+    console.log(error)
   }
 });

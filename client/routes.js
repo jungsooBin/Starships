@@ -13,6 +13,7 @@ import CartPage from './components/Pages/CartPage'
 import Checkout from './components/Pages/Checkout'
 import SingleUserPage from './components/Pages/SingleUserPage'
 import SingleShipPage from './components/Pages/SingleShipPage'
+import AddReview from './components/forms/AddReview'
 
 import HomePage from './components/Pages/HomePage';
 //import Cart from './components/Pages/Cart'
@@ -39,8 +40,7 @@ class Routes extends Component {
         <Route exact path='/starships/:id' component={SingleShipPage}/>
         <Route exact path="/starships" component={ShipList} />
         <Route exact path='/starships/:id' component={SingleShipPage}/>
-        {/* <Route exact path='/starships/:id/AddReview' component={AddReview}/>
-        <Route exact path='/starships/:id/:reviewId' component={AddReview}/> */}
+        <Route exact path='/starships/:id/addreview' component={AddReview}/> */}
         <Route path="/cart" component={CartPage} />
         <Route path='/checkout' component={Checkout} />
         <Route path='/users/:userId' component={SingleUserPage} />
