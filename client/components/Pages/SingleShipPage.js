@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchSingleShip } from '../../store/ship';
 import { addToCart } from '../../store/cart';
-import {ReviewList} from './ReviewList'
+//import {ReviewList} from './ReviewList'
 
 class SingleShipPage extends Component {
 

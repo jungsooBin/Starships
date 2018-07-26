@@ -4,7 +4,11 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {me} from './store'
-import {ShipList, CartPage, Checkout, SingleUserPage, SingleShipPage} from './Pages'
+import ShipList from './components/Pages/ShipList'
+import SingleShipPage from './components/Pages/SingleShipPage'
+//import Cart from './components/Pages/Cart'
+//Checkout, SingleUserPage, 
+  
 
 /**
  * COMPONENT
@@ -29,9 +33,6 @@ class Routes extends Component {
 
             <Route exact path="/starships" component={ShipList} />
             <Route exact path='/starships/:id' component={SingleShipPage}/>
-            <Route path="/cart" component={CartPage} />
-            <Route path='/checkout' component={Checkout} />
-            <Route path='/users/:userId' component={SingleUserPage} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -71,3 +72,10 @@ Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }
+
+
+
+
+// <Route path='/checkout' component={Checkout} />
+// <Route path='/users/:userId' component={SingleUserPage} />
+//<Route path="/cart" component={Cart} />
