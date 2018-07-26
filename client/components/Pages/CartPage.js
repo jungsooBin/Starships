@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const CartPage = (props) => {
   return (
     <div>
-      <p>Your cart right now</p>
+      <p>Your Cart</p>
       {Object.keys(props.items).length === 0
         ? <div>Is empty :(</div>
         : (
