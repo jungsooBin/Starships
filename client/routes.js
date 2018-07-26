@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
@@ -26,6 +27,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+
             <Route exact path="/starships" component={ShipList} />
             <Route exact path='/starships/:id' component={SingleShipPage}/>
             <Route path="/cart" component={CartPage} />
