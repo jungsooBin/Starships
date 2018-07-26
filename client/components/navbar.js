@@ -16,9 +16,6 @@ import React, { Component } from 'react'
   }
 }
 
-
-
-
 /**
  * CONTAINER
  */
