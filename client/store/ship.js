@@ -14,15 +14,19 @@ export const startLoading = () => ({ type: START_LOADING });
 //thunk creator
 export const fetchShips = () => {
   return async dispatch => {
-  const res = await axios.get('/api/ship');
-  dispatch(getShips(res.data));
+  const res = await axios.get('/api/ships');
+  const ships = res.data;
+  const action = getShips(ships)
+  dispatch(action);
   }
 }
 
 export const fetchSingleShip = ShipId => {
   return async dispatch => {
-    const res = await axios.get(`/api/Ship/${ShipId}`);
-    return dispatch(getSingleShip(res.data));
+    const res = await axios.get(`/api/ships/${ShipId}`);
+    const ship = res.data;
+    const action = getSingleShip(ship);
+    dispatch(action);
   }
 }
 

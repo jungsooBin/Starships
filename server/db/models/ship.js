@@ -21,6 +21,9 @@ const Ship = db.define('starships', {
   imageUrl: {
     type: Sequelize.TEXT,
     defaultValue: 'https://i.stack.imgur.com/rsH6n.png'
+  },
+  isFeatured: {
+    type: Sequelize.BOOLEAN,
   }
 
 });
