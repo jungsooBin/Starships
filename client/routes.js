@@ -78,7 +78,6 @@ Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }
-}
 
 // <Route path='/checkout' component={Checkout} />
 // <Route path='/users/:userId' component={SingleUserPage} />
