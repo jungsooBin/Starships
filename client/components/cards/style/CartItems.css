@@ -1,0 +1,30 @@
+.container-ships {
+    width: 100%;
+    height: 130px;
+}
+
+.container-ships-item {
+    width: 52.5%;
+    display: inline-block;
+}
+.container-ships-price {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+}
+.container-ships-quantity {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+
+}
+.container-ships-img {
+    width: 30%;
+    display: inline-block;
+   
+}
+.container-ships-info {
+    width: 50%;
+    display: inline-block;
+    margin-left: 20px;
+}
