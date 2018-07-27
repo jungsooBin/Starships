@@ -2,17 +2,24 @@
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchShips } from '../../store/ship';
+import {putInCart} from '../../store/cart';
 require('./style/shipCard.css')
-//Not really sure about this page, but it would be useful, ask team
 
 
 
-import React from 'react'
+import React, { Component } from 'react'
 
-export default function ShipCard(props) {
-  const ship = props.ship;
-  return (
-    <div className="card">
+export default class Shipcard extends Component {
+
+
+  addingToCart(evt){
+    console.log(evt)
+  }
+
+  render() {
+    const ship = this.props.ship
+    return (
+      <div className="card">
       <div className='img-container'>
         <img src={ship.imageUrl} />
       </div>
@@ -24,9 +31,23 @@ export default function ShipCard(props) {
             <p>Model: {ship.model} </p>
             <p>Price: {ship.price} </p>
           </Link>
-          <button className="button button2">Add to Cart</button>
+          <button onClick={()=>this.addingToCart(ship.id)} className="button button2">Add to Cart</button>
         </div>
       </div>
     </div>
-  )
+    )
+  }
 }
+// const mapStateToProps = state =>{
+//   return {
+//     user : state.user
+//   }
+// }
+
+// const mapDispatchToProps = dispatch =>{
+//   return {
+//     putInCart: (shipId) => dispatch(putInCart(shipId)),
+//   }
+// }
+
+//  connect(mapStateToProps,mapDispatchToProps)(Shipcard)

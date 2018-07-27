@@ -15,6 +15,7 @@ export const removeFromCart = productId => ({
 
 export const putInCart = (productId, userId) => {
   return async dispatch => {
+    
     const res = await axios.put(`/api/userCart/${userId}`, {productId});
     dispatch(addToCart(res.data));
   }
