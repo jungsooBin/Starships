@@ -36,6 +36,17 @@ router.put('/:userId', async (req,res,next) => {
   } catch (error) { next (error) }
 });
 
+
+router.put('/userCart/:userId', async (req,res,next) => {
+  try {
+    const findUser = await User.findById(req.params.userId);
+    const updatedUser = await findUser.update({
+      cart: [...findUser.cart, req.body.productId]
+    })
+    res.json(updatedUser.cart)
+  } catch (error) { next (error) }
+});
+
 router.delete('/:userId', async (req, res, next) => {
   try {
     await User.destroy({
