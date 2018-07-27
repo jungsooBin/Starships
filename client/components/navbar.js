@@ -7,19 +7,30 @@ require('./style/navbar.css')
 
 import React, { Component } from 'react'
 
- class Navbar extends Component {
+class Navbar extends Component {
   render() {
-    return (
+    return this.props.isLoggedIn ?
       <div className='navbar'>
         <ul>
-            <li><a className="active" href="#home">Home</a></li>
-            <li><a href="#starships">All Ships</a></li>
-            <li><a href="#account"> User's Name</a></li>
-            <li className='right'><a href="#account">Account</a></li>
-            <li className='right'><a href="#cart">Cart (0)</a></li>
+          <li><Link className="active" to="/home">Home</Link></li>
+          <li><Link to="/starships">All Ships</Link></li>
+          <li><Link to="/account">Me</Link></li>
+          <li><button type='submit' onClick={this.props.handleClick}>Logout</button></li>
+          <li className='right'><Link to="/account">Account</Link></li>
+          <li className='right'><Link to="/cart">Cart (0)</Link></li>
         </ul>
       </div>
-    )
+      :
+      <div className='navbar'>
+        <ul>
+          <li><Link className="active" to="/home">Home</Link></li>
+          <li><Link to="/starships">All Ships</Link></li>
+          <li className='right'><Link to="/account">Account</Link></li>
+          <li className='right'><Link to="/cart">Cart (0)</Link></li>
+          <li className='right'><Link to='/login'>Login</Link></li>
+          <li className='right'><Link to='/signup'>Sign Up</Link></li>
+        </ul>
+      </div>
   }
 }
 
