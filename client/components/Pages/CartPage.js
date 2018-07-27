@@ -104,7 +104,7 @@ export default CartPage;
             const item = props.items[productId];
             return (
               <div key={productId}>
-                {item.title} (x{item.quantity})
+                {item.title} ({item.quantity})
               </div>
             );
           })}

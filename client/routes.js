@@ -1,14 +1,23 @@
+
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Route, Switch} from 'react-router-dom'
+import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {me} from './store'
+
+// import AddReview from './components/Pages/AddReview'
+// import EditReview from './components/Pages/EditReview'
 import ShipList from './components/Pages/ShipList'
+import CartPage from './components/Pages/CartPage'
+import Checkout from './components/Pages/Checkout'
+// import SingleUserPage from './components/Pages/SingleUserPage'
 import SingleShipPage from './components/Pages/SingleShipPage'
+import AddReview from './components/forms/AddReview'
+
+import HomePage from './components/Pages/HomePage';
 //import Cart from './components/Pages/Cart'
-//Checkout, SingleUserPage, 
-  
+//Checkout, SingleUserPage,
 
 /**
  * COMPONENT
@@ -19,24 +28,28 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const { isLoggedIn } = this.props
 
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route exact path='/home' component={HomePage} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/starships" component={ShipList} />
+        <Route exact path='/starships/:id' component={SingleShipPage}/>
+        <Route exact path='/starships/:id/addreview' component={AddReview}/> */}
+        <Route path="/cart" component={CartPage} />
+        <Route path='/checkout' component={Checkout} />
+        <Route path='/users/:userId' component={UserHome} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
-
-            <Route exact path="/starships" component={ShipList} />
-            <Route exact path='/starships/:id' component={SingleShipPage}/>
+            <Route exact path="/home" component={UserHome} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Route component={Login} />
+        <Route exact path= '/' component={HomePage} />
       </Switch>
     )
   }
@@ -73,9 +86,10 @@ Routes.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired
 }
 
-
-
-
 // <Route path='/checkout' component={Checkout} />
 // <Route path='/users/:userId' component={SingleUserPage} />
 //<Route path="/cart" component={Cart} />
+
+
+// <Route exact path='/starships/:id/AddReview' component={AddReview}/>
+// <Route exact path='/starships/:id/:reviewId' component={AddReview}/>

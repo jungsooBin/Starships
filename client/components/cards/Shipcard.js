@@ -7,25 +7,26 @@ require('./style/shipCard.css')
 
 
 
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Shipcard extends Component {
-  render() {
-    return (
+export default function ShipCard(props) {
+  const ship = props.ship;
+  return (
     <div className="card">
-        <div className='img-container'>
-        <img src="https://i.stack.imgur.com/l60Hf.png" />
-        </div>
-    <div className="container">
-        <h4 className = 'center'><b>Ship Name</b></h4>
+      <div className='img-container'>
+        <img src={ship.imageUrl} />
+      </div>
+      <div className="container">
+        <h4 className='center'><b>{ship.name}</b></h4>
         <div className='center'>
-        <p>Name: Ship Name </p> 
-        <p>Model: Ship Model </p> 
-        <p>Price: Ship Price </p> 
-        <button className="button button2">Add to Cart</button>
+          <Link to={`/starships/${ship.id}`} >
+            <p>Name: {ship.name}</p>
+            <p>Model: {ship.model} </p>
+            <p>Price: {ship.price} </p>
+          </Link>
+          <button className="button button2">Add to Cart</button>
         </div>
       </div>
-  </div>
-    )
-  }
+    </div>
+  )
 }

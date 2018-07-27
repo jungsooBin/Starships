@@ -3,7 +3,25 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchSingleShip } from '../../store/ship';
 import { addToCart } from '../../store/cart';
-//import {ReviewList} from './ReviewList'
+
+const reviewList = (reviews) => {
+  if (!reviews) {return <h2>There are no reviews registered in the database</h2>}
+  //ternary is not working, fix it later. (if student.campus.name === 'null')
+  return reviews.map(review => (
+    <div key={review.id}>
+
+      <li>
+        <Link to={`/starships/${review.shipId}/${review.id}`}>
+          <p>Edit review</p>
+        </Link>
+        <h3>reviewer: {review.userId}</h3>
+        <p>review content: {review.content}</p>
+        <p>review rate: {review.rate}</p>
+      </li>
+    
+  </div>
+    ))
+}
 
 class SingleShipPage extends Component {
 
@@ -11,16 +29,16 @@ class SingleShipPage extends Component {
     super();
     this.state = {
       quantity : 0,
-      product : this.props.singleShip
     }
   }
 
   componentDidMount() {
-    this.props.fetchSingleShip();
+    const id = this.props.match.params.id;
+    this.props.fetchSingleShip(id);
   }
 
   render() {
-    const singleShip = this.state.product;
+    const singleShip = this.props.singleShip;
 
     return (
       <div>
@@ -38,13 +56,19 @@ class SingleShipPage extends Component {
         <p>Quantity:</p>
         <button onClick={() => {this.setState({quantity:this.state.quantity-1})}} >-</button>
         <h6>{this.state.quantity}</h6>
-        <button onClick={() => {this.setState({quantity:this.state.quantity-1})}} >+</button>
+        <button onClick={() => {this.setState({quantity:this.state.quantity+1})}} >+</button>
 
         <hr />
-        <button onClick={() => putInCart(singleShip.name, quantity)}>Add To Cart</button>
+        <button onClick={() => this.props.putInCart(singleShip.name, this.state.quantity)}>Add To Cart</button>
         <hr />
-        <ReviewList starship={singleShip}/>
-
+        <h1>Reviews</h1>
+          <ul>
+            {reviewList(singleShip.reviews)}
+          </ul>
+        <Link to={`/starships/${singleShip.id}/addreview`}>
+          <p>Add review</p>
+        </Link>
+          
       </div>
     )
 
@@ -54,7 +78,7 @@ class SingleShipPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    singleShip: state.singleShip
+    singleShip: state.ship.singleShip
   }
 }
 
