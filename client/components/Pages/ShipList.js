@@ -12,7 +12,6 @@ class ShipList extends Component {
   componentDidMount() {
     this.props.fetchShips();
   }
-
   render() {
     const { ships, putInCart } = this.props;
 
@@ -38,7 +37,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchShips: () => dispatch(fetchShips()),
-    putInCart: (product) => dispatch(addToCart(product))
   }
 }
 
