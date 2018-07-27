@@ -14,6 +14,14 @@ router.get('/:id', async(req, res, next) =>{
     res.json(review);
   }catch(error){
     next(error) 
-    console.log(error)
   }
 });
+
+router.post('/:id', async (req, res, next) => {
+  try {
+    const addCampus = await Review.create(req.body)
+    res.json(addCampus)
+  } catch (error) {
+    console.error(error)
+  }
+})
