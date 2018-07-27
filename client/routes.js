@@ -11,8 +11,9 @@ import {me} from './store'
 import ShipList from './components/Pages/ShipList'
 import CartPage from './components/Pages/CartPage'
 import Checkout from './components/Pages/Checkout'
-import SingleUserPage from './components/Pages/SingleUserPage'
+// import SingleUserPage from './components/Pages/SingleUserPage'
 import SingleShipPage from './components/Pages/SingleShipPage'
+import AddReview from './components/forms/AddReview'
 
 import HomePage from './components/Pages/HomePage';
 //import Cart from './components/Pages/Cart'
@@ -27,25 +28,27 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const { isLoggedIn } = this.props
 
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        {/* <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} /> */}
-        {/* Routes placed here are only available after logging in */}
+        <Route exact path='/home' component={HomePage} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
         <Route exact path="/starships" component={ShipList} />
         <Route exact path='/starships/:id' component={SingleShipPage}/>
-        <Route exact path="/starships" component={ShipList} />
-        <Route exact path='/starships/:id' component={SingleShipPage}/>
-        {/* <Route exact path='/starships/:id/AddReview' component={AddReview}/>
-        <Route exact path='/starships/:id/:reviewId' component={AddReview}/> */}
+        <Route exact path='/starships/:id/addreview' component={AddReview}/> */}
         <Route path="/cart" component={CartPage} />
         <Route path='/checkout' component={Checkout} />
-        <Route path='/users/:userId' component={SingleUserPage} />
+        <Route path='/users/:userId' component={UserHome} />
+        {isLoggedIn && (
+          <Switch>
+            {/* Routes placed here are only available after logging in */}
+            <Route exact path="/home" component={UserHome} />
+          </Switch>
+        )}
         {/* Displays our Login component as a fallback */}
-        <Route exact path='/home' component={HomePage} />
         <Route exact path= '/' component={HomePage} />
       </Switch>
     )
@@ -86,3 +89,7 @@ Routes.propTypes = {
 // <Route path='/checkout' component={Checkout} />
 // <Route path='/users/:userId' component={SingleUserPage} />
 //<Route path="/cart" component={Cart} />
+
+
+// <Route exact path='/starships/:id/AddReview' component={AddReview}/>
+// <Route exact path='/starships/:id/:reviewId' component={AddReview}/>

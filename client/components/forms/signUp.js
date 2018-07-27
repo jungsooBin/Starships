@@ -42,7 +42,7 @@ class SignUp extends Component {
             Password:<br />
             <input type="text" name="password" />
             <br />
-            <button type='submit'> Submit</button>
+            <button type='submit' disabled={!this.state.firstName || !this.state.lastName || !this.state.email || !this.state.address || !this.state.password}> Submit</button>
             </form>
         </div>
     )
