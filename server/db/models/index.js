@@ -5,14 +5,14 @@ const Cart = require('./cart');
 const Payment = require('./payment');
 
 
-Ship.belongsToMany(User, {through: Cart}, {as: 'userCart'});
+Ship.belongsToMany(User, { as: 'users_Ship', through: Cart});
 Ship.hasMany(Review)
 
 Review.belongsTo(Ship)
 Review.belongsTo(User)
 
 
-User.belongsToMany(Ship, {through: Cart}, {as: 'userCart'})
+User.belongsToMany(Ship, {as: 'ships_User', through: Cart})
 // User.hasMany(Ship, {through: Cart});
 User.hasMany(Review);
 User.hasOne(Cart);
