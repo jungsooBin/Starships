@@ -3,20 +3,20 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
-  firstName: {
-    type: Sequelize.STRING,
-    allowNull : false,
-    validate:{
-      len : [1,250]
-    }
-  },
-  lastName: {
-    type: Sequelize.STRING,
-    allowNull : false,
-    validate:{
-      len : [1,250]
-    }
-  },
+  // firstName: {
+  //   type: Sequelize.STRING,
+  //   allowNull : false,
+  //   validate:{
+  //     len : [1,250]
+  //   }
+  // },
+  // lastName: {
+  //   type: Sequelize.STRING,
+  //   allowNull : false,
+  //   validate:{
+  //     len : [1,250]
+  //   }
+  // },
   email: {
     type: Sequelize.STRING,
     unique: true,
@@ -40,9 +40,6 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
-  },
-  cart: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
   }
 })
 

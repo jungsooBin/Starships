@@ -27,7 +27,6 @@ class Shipcard extends Component {
         <h4 className='center'><b>{ship.name}</b></h4>
         <div className='center'>
           <Link to={`/starships/${ship.id}`} >
-            <p>Name: {ship.name}</p>
             <p>Model: {ship.model} </p>
             <p>Price: {ship.price} </p>
           </Link>
