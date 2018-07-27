@@ -1,10 +1,11 @@
+import axios from "axios";
+
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 
-export const addToCart = (product,quantity) => ({
+export const addToCart = (productId) => ({
   type: ADD_TO_CART,
-  product,
-  quantity
+  payload: productId
 });
 
 export const removeFromCart = productId => ({
@@ -12,12 +13,19 @@ export const removeFromCart = productId => ({
   payload: productId
 });
 
+export const putInCart = (productId, userId) => {
+  return async dispatch => {
+    const res = await axios.put(`/api/userCart/${userId}`, {productId});
+    dispatch(addToCart(res.data));
+  }
+}
+
 //check if remove is correct
 
 const cartReducer = (cartState = [], action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      return [...cartState, action.payload];
+      return  action.payload
     case REMOVE_FROM_CART:
       return cartState.filter(obj => obj.id !== action.payload);
     default:
