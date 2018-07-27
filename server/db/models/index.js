@@ -32,3 +32,4 @@ Payment.belongsTo(User);
 module.exports = {
   User, Ship, Review, Payment
 }
+
