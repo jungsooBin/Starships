@@ -11,7 +11,8 @@ const reviewList = (reviews) => {
     <div key={review.id}>
 
       <li>
-        <Link to={`/starships/${review.shipId}/${review.id}`}>
+        {/* We should fix this because it must need authority*/}
+        <Link to={`/starships/${review.starshipId}/${review.id}`}>
           <p>Edit review</p>
         </Link>
         <h3>reviewer: {review.userId}</h3>
