@@ -36,7 +36,10 @@ class SingleShipPage extends Component {
 
         <hr />
         <p>Quantity:</p>
-        <button onClick={() => {this.setState({quantity:this.state.quantity-1})}} >-</button>
+        <button onClick={() => {
+          if(this.state.quantity > 0){
+            this.setState({quantity:this.state.quantity-1})
+          }}}> -</button>
         <h6>{this.state.quantity}</h6>
         <button onClick={() => {this.setState({quantity:this.state.quantity+1})}} >+</button>
 
