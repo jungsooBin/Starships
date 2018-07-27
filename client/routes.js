@@ -33,11 +33,14 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        {!isLoggedIn &&(
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route exact path='/home' component={HomePage} />
+        <Route exact path="/starships" component={ShipList} />
+        <Route exact path='/starships/:id' component={SingleShipPage}/>
+        {isLoggedIn &&(
           <Switch>
             <Route exact path='/home' component={HomePage} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
             <Route exact path="/starships" component={ShipList} />
             <Route exact path='/starships/:id' component={SingleShipPage}/>
             <Route exact path='/starships/:id/addreview' component={AddReview}/>
@@ -45,13 +48,12 @@ class Routes extends Component {
             <Route path='/checkout' component={Checkout} />
           </Switch>
         )}
-        {isLoggedIn && (
-          <Switch>
-            {/* Routes placed here are only available after logging in */}
-            <Route exact path="/home" component={HomePage} />
-            <Route path='/users/:userId' component={UserHome} />
-          </Switch>
-        )}
+
+
+        <Switch>
+          <Route exact path="/home" component={HomePage} />
+          <Route path='/users/:userId' component={UserHome} />
+        </Switch>
         {/* Displays our Login component as a fallback */}
         <Redirect to= '/home'/>
       </Switch>
