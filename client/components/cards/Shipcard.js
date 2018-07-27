@@ -9,11 +9,11 @@ require('./style/shipCard.css')
 
 import React, { Component } from 'react'
 
-export default class Shipcard extends Component {
+class Shipcard extends Component {
 
 
-  addingToCart(evt){
-    console.log(evt)
+  addingToCart(ship){
+    this.props.putInCart(ship)
   }
 
   render() {
@@ -38,16 +38,16 @@ export default class Shipcard extends Component {
     )
   }
 }
-// const mapStateToProps = state =>{
-//   return {
-//     user : state.user
-//   }
-// }
+const mapStateToProps = state =>{
+  return {
+    user : state.user
+  }
+}
 
-// const mapDispatchToProps = dispatch =>{
-//   return {
-//     putInCart: (shipId) => dispatch(putInCart(shipId)),
-//   }
-// }
+const mapDispatchToProps = dispatch =>{
+  return {
+    putInCart: (shipId) => dispatch(putInCart(shipId)),
+  }
+}
 
-//  connect(mapStateToProps,mapDispatchToProps)(Shipcard)
+export default connect(mapStateToProps,mapDispatchToProps)(Shipcard)

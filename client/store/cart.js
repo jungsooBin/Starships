@@ -13,11 +13,11 @@ export const removeFromCart = productId => ({
   payload: productId
 });
 
-export const putInCart = (productId, userId) => {
+export const putInCart = (productId) => {
   return async dispatch => {
-    
-    const res = await axios.put(`/api/userCart/${userId}`, {productId});
-    dispatch(addToCart(res.data));
+    console.log("string from product" + productId)
+    // const res = await axios.put(`/api/userCart/${userId}`, {productId});
+    // dispatch(addToCart(res.data));
   }
 }
 
